@@ -1,0 +1,136 @@
+:root {
+  --bg: #090a0d;
+  --bg-surface: #101217;
+  --bg-surface-hover: #15181f;
+  --text: #e6e8eb;
+  --text-muted: #828794;
+  --text-dim: #4d515d;
+  --border: #1d2028;
+  --border-focus: #323744;
+  --accent: #e25822; /* Aerospace signal amber */
+  --accent-dim: rgba(226, 88, 34, 0.15);
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-feature-settings: 'ss01' on, 'cv05' on;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Canvas container */
+.canvas-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Scroll track setup */
+.scroll-track {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+/* Overlay sections layout */
+.section-station {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: clamp(2rem, 6vw, 6rem);
+  pointer-events: none;
+}
+
+.section-content {
+  pointer-events: auto;
+  max-width: 720px;
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-focus);
+}
+
+/* Modal transition */
+.modal-backdrop {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(9, 10, 13, 0.85);
+}
+
+/* Subtle technical grid background */
+.tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+@media (min-width: 768px) {
+  .md-flex {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-station {
+    padding: 5rem 1.5rem 3rem;
+  }
+}
+
